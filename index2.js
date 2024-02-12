@@ -1,0 +1,19 @@
+// Basic zod implemantation
+
+const express = require('express')
+const zod = require("zod");
+const app = express();
+const port = 3000
+
+const schema = zod.array(zod.number());
+app.use(express.json())
+app.post("/health-checkup", (req ,res)=>{
+const kidenys = req.bosy.kidneys;
+const response = schema.safeParse(kidneys)
+res.send({
+  response
+})
+})
+app.listen(port, () => {
+   console.log(`Example app listening on port ${port}`)
+ })
